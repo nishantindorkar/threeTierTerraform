@@ -61,6 +61,54 @@ variable "ecs_associate_public_ip_address" {
 }
 
 variable "instance_user" {
-  type = string
+  type    = string
   default = "ubuntu"
+}
+
+# variable "internal_lb_dns_name" {
+#   type = string
+# }
+
+variable "rds_subnet_name" {
+  default = "rds_group"
+}
+
+variable "rds_storage" {
+  default = "20"
+}
+
+variable "rds_engine" {
+  default = "mysql"
+}
+
+variable "rds_engine_version" {
+  default = "8.0.28"
+}
+variable "rds_instance_class" {
+  default = "db.t2.micro"
+}
+
+variable "rds_db_name" {
+  default = "studentapp"
+}
+
+variable "rds_username" {
+  default = "admin"
+}
+
+variable "rds_password" {
+  default = "Admin$123"
+}
+
+variable "rds_identifier" {
+  default = "my-rds-instance"
+}
+
+variable "rds_storage_type" {
+  default = "gp2"
+}
+
+variable "skip_snapshot" {
+  type    = bool
+  default = true
 }
