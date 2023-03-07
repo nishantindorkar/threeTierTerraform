@@ -59,3 +59,8 @@ variable "ecs_associate_public_ip_address" {
   type    = bool
   default = true
 }
+
+variable "instance_user" {
+  type = string
+  default = "ubuntu"
+}

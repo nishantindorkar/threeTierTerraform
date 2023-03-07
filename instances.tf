@@ -1,14 +1,28 @@
+# resource "aws_instance" "public_instance" {
+#   ami                         = data.aws_ami.ubuntu.id
+#   instance_type               = var.instance_type
+#   key_name                    = var.key_name
+#   vpc_security_group_ids      = [aws_security_group.main-sg.id]
+#   subnet_id                   = aws_subnet.public[0].id
+#   associate_public_ip_address = var.ecs_associate_public_ip_address
+#   tags = {
+#     Name = "jump-server"
+#   }
+# }
+
 resource "aws_instance" "public_instance" {
+  count                       = 2
   ami                         = data.aws_ami.ubuntu.id
   instance_type               = var.instance_type
   key_name                    = var.key_name
   vpc_security_group_ids      = [aws_security_group.main-sg.id]
-  subnet_id                   = aws_subnet.public[0].id
+  subnet_id                   = aws_subnet.public[count.index % 2].id
   associate_public_ip_address = var.ecs_associate_public_ip_address
   tags = {
-    Name = "jump-server"
+    Name = "jump-server-${count.index + 1}"
   }
 }
+
 
 resource "aws_instance" "private_instances" {
   count                  = var.instance_count
