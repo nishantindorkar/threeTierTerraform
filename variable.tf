@@ -5,7 +5,7 @@ variable "profile" {
 
 variable "region" {
   type    = string
-  default = "us-east-1"
+  default = "us-east-2"
 }
 
 variable "cidr_blocks" {
@@ -30,7 +30,7 @@ variable "private_cidr_blocks" {
 
 variable "availability_zones" {
   type    = list(string)
-  default = ["us-east-1a", "us-east-1b"]
+  default = ["us-east-2a", "us-east-2b"]
 }
 
 variable "name_prefix" {
@@ -53,7 +53,7 @@ variable "instance_type" {
 # }
 variable "key_name" {
   type    = string
-  default = "allPurposeVirginia"
+  default = "ohio-key"
 }
 variable "ecs_associate_public_ip_address" {
   type    = bool
@@ -64,10 +64,6 @@ variable "instance_user" {
   type    = string
   default = "ubuntu"
 }
-
-# variable "internal_lb_dns_name" {
-#   type = string
-# }
 
 variable "rds_subnet_name" {
   default = "rds_group"
